@@ -203,7 +203,7 @@ func (p *CloningProtectionController) syncClaim(claim *v1.PersistentVolumeClaim)
 		if !apierrs.IsNotFound(err) {
 			// Couldn't remove finalizer and the object still exists, the controller may
 			// try to remove the finalizer again on the next update
-			klog.Infof("failed to remove clone finalizer from PVC %v", claim.Name)
+			klog.Infof("failed to remove clone finalizer from PVC %v: %v", claim.Name, err)
 			return err
 		}
 	}
